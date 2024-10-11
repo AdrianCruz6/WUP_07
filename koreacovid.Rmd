@@ -27,16 +27,24 @@ state of a patient must be died or alive - we adjust that as well
   
 # Your Question - Is dying independent of sex?
 
+## Methods
+$H_0$= Dying is independent of sex.  
+$H_A$= Dying is dependent of sex.  
 
+Sex~Result Cat~Cat
 
 
 
 
 ## Graphical results - use ggplot commands to do this  
 
+```{r}
+barchartGC(~result + Sex,data=kRdata)
+barchartGC(~result + Sex,data=kRdata, type="percent")
 
+```
 
-  
+  The bar chart shows that men die at a higher rate than women.
 
 
 
