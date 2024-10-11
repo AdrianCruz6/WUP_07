@@ -39,8 +39,8 @@ Sex~Result Cat~Cat
 ## Graphical results - use ggplot commands to do this  
 
 ```{r}
-barchartGC(~result + Sex,data=kRdata)
-barchartGC(~result + Sex,data=kRdata, type="percent")
+barchartGC(~result + sex,data=kRdata)
+barchartGC(~result + sex,data=kRdata, type="percent")
 
 ```
 
@@ -48,16 +48,27 @@ barchartGC(~result + Sex,data=kRdata, type="percent")
 
 
 
-
-
   
 ## Numerical results
 
+```{r}
+table1 <- xtabs(~result + sex, data=kRdata)
+rowPerc(table1)
+colPerc(table1)
+```
+
+This numerical data shows that 64% of men died and only 36% of women died.
 
 ## Inferential results 
 
+```{r}
+chisq.test(table1)
+chisqtestGC(table1)
+fisher.test(table1)
+```
 
-
+With these inferential results, the P-Value was 0.001, thus, we must reject the null hypothesis since the P-value is lower than 0.05. Therefore, men are 2.3 more times likely to die from Covid in Korea than women. 
 
 ## Conclusions
 
+We analyzed the data regarding women and men death rates in Korea during covid and if sex is independent of dying. We first plotted a graph and were shown that men often tend to die more than women on average. Stastically the difference was pretty massive with men dying at a 64% rate and women only at 36%. Finally, we analyzed the P-Value to guarantee that there is a difference between sex and death. After viewing that the P-value is 0.001, which is lower than 0.05, we must reject the null hypothesis meaning that death is dependent on sex. We also know that men are 2.3 times more likely to die from covid in Korea than women.
